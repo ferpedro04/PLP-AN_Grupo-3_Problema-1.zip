@@ -1,5 +1,5 @@
 def calcular_media(notas):
-    #Calcula a média aritmética de uma lista de notas.
+    #Calcula a média aritmética das notas.
     if not notas:
         return 0.0
     soma = 0
@@ -17,7 +17,6 @@ def determinar_situacao(media):
 
 
 def calcular_estatisticas_turma(alunos):
-    #Calcula a média geral, a maior nota e a menor nota da turma.
     soma_medias = 0
     maior_nota = alunos[0]["notas"][0]
     menor_nota = alunos[0]["notas"][0]
