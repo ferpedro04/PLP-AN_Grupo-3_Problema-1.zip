@@ -9,7 +9,7 @@ def calcular_media(notas):
 
 
 def determinar_situacao(media):
-    #Determina a situação do aluno com base na média (Aprovado >= 7.0).
+    # Se media > 7, será aprovado. Caso contrário, reprovado
     if media >= 7.0:
         return "Aprovado"
     else:
@@ -19,7 +19,6 @@ def determinar_situacao(media):
 def calcular_estatisticas_turma(alunos):
     #Calcula a média geral, a maior nota e a menor nota da turma.
     soma_medias = 0
-    # Inicializa a maior e menor nota com a primeira nota do primeiro aluno da lista
     maior_nota = alunos[0]["notas"][0]
     menor_nota = alunos[0]["notas"][0]
 
@@ -36,7 +35,7 @@ def calcular_estatisticas_turma(alunos):
 
 
 def ordenar_alunos_por_nome(alunos):
-    #Retorna uma nova lista ordenada em ordem alfabética pelo nome.
+    #nova lista ordenada em ordem alfabética pelo nome.
     return sorted(alunos, key=lambda x: x["nome"])
 
 
@@ -55,12 +54,10 @@ def principal():
 
     alunos_processados = []
 
-    # Processamento dos dados utilizando as funções estruturadas
     for nota in notas_alunos:
         media = calcular_media(nota["notas"])
         situacao = determinar_situacao(media)
 
-        # Cria o dicionário completo do aluno com os cálculos agregados
         aluno = {
             "nome": nota["nome"],
             "notas": nota["notas"],
@@ -72,12 +69,12 @@ def principal():
     # Cálculos estatísticos gerais da turma
     media_geral, maior_nota, menor_nota = calcular_estatisticas_turma(alunos_processados)
 
-    # Ordenação alfabética
+    # Ordem alfabética
     alunos_ordenados = ordenar_alunos_por_nome(alunos_processados)
 
-    # Exibição da Listagem Ordenada
+    # Exibe a listagem por ordem alfabetica
     print("\n" + "=" * 50)
-    print("LISTAGEM ORDENADA DE ALUNOS")
+    print("LISTAGEM DE ALUNOS")
     print("=" * 50)
     for aluno in alunos_ordenados:
         print(f"Nome: {aluno['nome']}")
@@ -85,7 +82,7 @@ def principal():
         print(f"Média: {aluno['media']:.2f} -> Situação: {aluno['situacao']}")
         print("-" * 50)
 
-    # Exibição das Estatísticas Gerais
+    # Exibe as estatísticas gerais
     print("\n" + "=" * 50)
     print("ESTATÍSTICAS GERAIS DA TURMA")
     print("=" * 50)
